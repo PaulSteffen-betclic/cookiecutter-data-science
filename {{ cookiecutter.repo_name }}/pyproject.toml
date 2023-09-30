@@ -1,0 +1,73 @@
+[tool.poetry]
+name = {{ cookiecutter.repo_name }}
+description = "{{ cookiecutter.description }}"
+version = "0.1.0"
+license = "Proprietary"
+authors = ["Data Science"]
+readme = "README.md"
+repository = "https://github.com/betclicgroup/{{ cookiecutter.repo_name }}.git"
+documentation = ""
+keywords = []
+packages = [{include = {{ cookiecutter.repo_name }}}]
+
+[tool.poetry.scripts]
+main = "{{ cookiecutter.repo_name }}.main:main"
+
+[tool.poetry.group.dev]
+optional = true
+
+[tool.poetry.group.codequality]
+optional = true
+
+[tool.poetry.group.test]
+optional = true
+
+[tool.poetry.group.docs]
+optional = true
+
+[tool.poetry.dependencies]
+python
+hydra-core
+
+[tool.poetry.group.dev.dependencies]
+jupyter
+ipykernel
+
+[tool.poetry.group.codequality.dependencies]
+ruff
+interrogate
+pre-commit
+black = {extras = ["jupyter"]}
+nbqa
+tox
+mypy
+
+[tool.poetry.group.test.dependencies]
+pytest
+
+[tool.poetry.group.docs.dependencies]
+mkdocstrings = {extras = ["python"]}
+mkdocs-jupyter
+pymdown-extensions
+mkdocs-section-index"
+mkdocs-literate-nav"
+mkdocs-material
+mkdocs-gen-files
+
+
+[[tool.poetry.source]]
+name = "betclic"
+url = "https://repository.betclic.net/artifactory/api/pypi/pypi/simple"
+default = true
+
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = "test_*.py"
+
+[tool.black]
+line-length = 120
