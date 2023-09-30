@@ -1,0 +1,3 @@
+role: R_DS_UAT_WRITE
+database: DATASCIENCE_UAT
+warehouse: WH_DS_UAT

@@ -1,0 +1,14 @@
+defaults:
+  - _self_
+  - snow_infos: dev
+  - aws_infos: dev
+
+snow_infos:
+  user: ${oc.env:SNOWFLAKE_USER}
+  account: ${oc.env:SNOWFLAKE_ACCOUNT}
+  schema: ${oc.env:SNOWFLAKE_SCHEMA}
+
+hydra:
+  run:
+    dir: ./{{ cookiecutter.repo_name }}/logs/${hydra.job.name}/${now:%Y-%m-%d}/${now:%H-%M-%S}
+  

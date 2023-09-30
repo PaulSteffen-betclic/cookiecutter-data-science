@@ -1,0 +1,3 @@
+role: R_DS_DEV_WRITE
+database: DATASCIENCE_DEV
+warehouse: WH_DS_DEV
