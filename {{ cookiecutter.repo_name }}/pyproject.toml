@@ -28,6 +28,7 @@ optional = true
 [tool.poetry.dependencies]
 python
 hydra-core
+loguru
 
 [tool.poetry.group.dev.dependencies]
 jupyter
