@@ -1,7 +1,7 @@
 {
     "project_name": "Project Name",
     "squad": ["Sport", "Casino", "Growth", "Safer Gaming", "Payment"],
-    "repo_name": "datascience-{{ cookiecutter.squad.lower()-{{ cookiecutter.project_name.lower().replace(' ', '_') }}",
+    "repo_name": "datascience-{{ cookiecutter.squad.lower() }}-{{ cookiecutter.project_name.lower().replace(' ', '_') }}",
     "package_name": "{{ cookiecutter.repo_name }}",
     "author_name": "Your name (or your organization/company/team)",
     "description": "A short description of the project."
