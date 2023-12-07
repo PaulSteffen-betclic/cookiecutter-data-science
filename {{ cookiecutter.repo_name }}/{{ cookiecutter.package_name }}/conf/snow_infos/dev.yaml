@@ -1,3 +1,6 @@
-role: R_DS_UAT_WRITE
-database: DATASCIENCE_UAT
-warehouse: WH_DS_UAT
+credentials:
+  user: ${oc.env:SNOWFLAKE_USER}
+  role: R_DS_DEV_WRITE
+  database: DATASCIENCE_DEV
+  warehouse: WH_DS_DEV
+  authenticator: externalbrowser
