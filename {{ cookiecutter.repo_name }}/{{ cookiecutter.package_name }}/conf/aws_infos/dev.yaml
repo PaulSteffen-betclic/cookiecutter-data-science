@@ -1,0 +1,4 @@
+credentials:
+  profile_name: DevSupportAccessDev
+
+bucket_name: bg-data-dev-<bucket-suffix>
