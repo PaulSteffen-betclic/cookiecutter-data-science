@@ -1,3 +1,8 @@
-role: R_DS_DEV_WRITE
-database: DATASCIENCE_DEV
-warehouse: WH_DS_DEV
+credentials:
+  user: AIRFLOW_DS_UAT
+  role: R_DS_UAT_WRITE
+  database: DATASCIENCE_UAT
+  warehouse: WH_DS_UAT
+  password: ???
+
+ssm_snow_con_params: /airflow/connections/airflow-stage2-snowflakeDS-secureStringParameter
