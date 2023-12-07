@@ -1,3 +1,8 @@
-role: {{ cookiecutter.repo_name }}/{{ cookiecutter.package_name }}/conf/snow_infos/dev.yaml
-database: DATASCIENCE
-warehouse: ${oc.env:SNOWFLAKE_WAREHOUSE}
+credentials:
+  user: AIRFLOW_DS_PROD
+  role: R_DS_PROD_WRITE
+  database: DATASCIENCE
+  warehouse: WH_DS_PROD_BETRECOMMENDER
+  password: ???
+
+ssm_snow_con_params: /airflow/connections/airflow-prod-snowflakeDS-secureStringParameter
