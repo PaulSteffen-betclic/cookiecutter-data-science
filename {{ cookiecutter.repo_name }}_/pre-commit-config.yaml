@@ -1,0 +1,58 @@
+repos:
+- repo: https://github.com/pre-commit/pre-commit-hooks
+  rev: v3.4.0
+  hooks:
+    - id: trailing-whitespace
+
+- repo: local
+  hooks:
+    - id: lint-with-ruff
+      name: Lint with Ruff
+      entry: ruff
+      language: system
+      pass_filenames: true
+      #files: ^cashout/
+      types: [python]
+      stages: [commit]
+
+- repo: local
+  hooks:
+    - id: format-with-black
+      name: Format with Black
+      entry: black
+      language: system
+      pass_filenames: true
+      #files: ^cashout/
+      types: [python]
+      stages: [commit]
+
+- repo: https://github.com/pre-commit/mirrors-mypy
+  rev: v0.910
+  hooks:
+    - id: mypy
+      name: Check Typing with mypy
+      entry: mypy
+      language: system
+      pass_filenames: true
+      #files: ^cashout/
+      types: [python]
+      stages: [commit]
+      args: ["--strict"]
+
+- repo: local
+  hooks:
+    - id: mirrors-isort
+      name: Mirrors Sort
+      entry: isort
+      language: system
+      #files: ^cashout/
+
+
+- repo: local
+  hooks:
+    - id: pytest-check
+      name: pytest-check
+      entry: pytest
+      language: system
+      pass_filenames: false
+      always_run: true

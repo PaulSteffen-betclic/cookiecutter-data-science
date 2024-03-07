@@ -6,7 +6,7 @@
 #################################################################################
 
 PROJECT_DIR := $(shell dirname $(realpath $(lastword $(MAKEFILE_LIST))))
-PROJECT_NAME = {{ cookiecutter.repo_name }}
+PACKAGE_NAME = {{ cookiecutter.package_name }}
 PYTHON_VERSION = {{ cookiecutter.python_version }}
 
 #################################################################################
@@ -45,16 +45,16 @@ install_dependencies:
 ## Lint using ruff
 lint:
 	@echo "Lint code..."
-	ruff check ${PROJECT_NAME}
+	ruff check ${PACKAGE_NAME}
 	nbqa ruff notebooks
 
 ## Check typing using mypy
 check_typing:
-	mypy ${PROJECT_NAME}
+	mypy ${PACKAGE_NAME}
 
 ## Check missing docstring using interrogate
 check_missing_docstring:
-	interrogate -vv ${PROJECT_NAME}/src
+	interrogate -vv ${PACKAGE_NAME}/src
 
 ## Clean notebooks using nb-clean
 clean_notebooks:
@@ -70,12 +70,12 @@ pre-commit:
 ## Execute tests
 test:
 	@echo "Test code..."
-	pytest ${PROJECT_NAME}/tests/ --hypothesis-show-statistics
+	pytest ${PACKAGE_NAME}/tests/ --hypothesis-show-statistics
 
 ## Generate documentation using MkDocs
 doc:
 	@echo "Make symbolic link to library for easy documentation building..."
-	cd docs; ln -sfn ../${PROJECT_NAME}/ ${PROJECT_NAME}
+	cd docs; ln -sfn ../${PACKAGE_NAME}/ ${PACKAGE_NAME}
 	@echo "Generate documentation..."
 	mkdocs serve
 
