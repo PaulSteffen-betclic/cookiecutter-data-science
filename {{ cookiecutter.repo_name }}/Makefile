@@ -1,4 +1,5 @@
-.PHONY: clean data lint requirements sync_data_to_s3 sync_data_from_s3
+.PHONY: create_venv add_dev_dependencies add_codequality_dependencies add_test_dependencies add_doc_dependencies \
+	install_dependencies lint check_typing check_missing_docstring clean_notebooks pre-commit test doc
 
 #################################################################################
 # GLOBALS                                                                       #
@@ -39,29 +40,25 @@ add_doc_dependencies:
 
 ## Install Python Dependencies
 install_dependencies: 
-	@echo "Installing dependencies..."
 	poetry install
 
 ## Lint using ruff
 lint:
 	@echo "Lint code..."
 	ruff check ${PROJECT_NAME}
-	nbqa ruff cashout/notebooks
+	nbqa ruff notebooks
 
 ## Check typing using mypy
 check_typing:
-	@echo "Check typing..."
 	mypy ${PROJECT_NAME}
 
 ## Check missing docstring using interrogate
 check_missing_docstring:
-	@echo "Check missing docstring..."
 	interrogate -vv ${PROJECT_NAME}/src
 
 ## Clean notebooks using nb-clean
 clean_notebooks:
-	@echo "Clean notebook outputs, metadata etc..."
-	nb-clean clean cashout/notebooks
+	nb-clean clean notebooks
 
 ## Update & run pre-commit
 pre-commit:
