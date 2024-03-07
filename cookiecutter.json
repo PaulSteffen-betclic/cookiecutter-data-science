@@ -1,8 +1,9 @@
 {
     "project_name": "Project Name",
-    "squad": ["Sport", "Casino", "Growth", "Safer Gaming", "Payment"],
-    "repo_name": "datascience-{{ cookiecutter.squad.lower() }}-{{ cookiecutter.project_name.lower().replace(' ', '_') }}",
+    "squad": ["Sport", "Casino", "Growth", "Safer Gaming", "Payment", "Other"],
+    "repo_name": "datascience-{{ cookiecutter.squad.lower().replace(' ', '') }}-{{ cookiecutter.project_name.lower().replace(' ', '-') }}",
     "package_name": "{{ cookiecutter.repo_name }}",
-    "author_name": "Your name (or your organization/company/team)",
+    "python_version": "3.11",
+    "author_name": "Data Science <DL_DatascienceTeam@betclicgroup.com>",
     "description": "A short description of the project."
 }
