@@ -6,6 +6,7 @@
 
 PROJECT_DIR := $(shell dirname $(realpath $(lastword $(MAKEFILE_LIST))))
 PROJECT_NAME = {{ cookiecutter.repo_name }}
+PYTHON_VERSION = {{ cookiecutter.python_version }}
 
 #################################################################################
 # COMMANDS                                                                      #
@@ -13,9 +14,28 @@ PROJECT_NAME = {{ cookiecutter.repo_name }}
 
 ## Set up python interpreter environment using Poetry
 create_venv:
-	@echo "Creating .venv..."
-	${PYTHON_INTERPRETER} -m venv .venv
-	poetry config virtualenvs.in-project true --local
+	( \
+    pyenv install ${PYTHON_VERSION}; \
+    pyenv local ${PYTHON_VERSION}; \
+    poetry env use ${PYTHON_VERSION}; \
+    poetry shell; \
+    )
+
+## Add dev dependencies
+add_dev_dependencies:
+	poetry add jupyter ipykernel --group dev
+
+## Add codequality dependencies
+add_codequality_dependencies:
+	poetry add ruff interrogate pre-commit "black[jupyter]" nbqa nox mypy --group codequality
+
+## Add test dependencies
+add_test_dependencies:
+	poetry add pytest --group test
+
+## Add test dependencies
+add_doc_dependencies:
+	poetry add "mkdocstrings[python]" mkdocs-jupyter pymdown-extensions mkdocs-section-index mkdocs-literate-nav mkdocs-material mkdocs-gen-files --group doc
 
 ## Install Python Dependencies
 install_dependencies: 
@@ -49,11 +69,6 @@ pre-commit:
 	pre-commit autoupdate
 	git add .pre-commit-config.yaml
 	pre-commit run
-
-## Start data versionning
-test:
-	@echo "Start data versionning..."
-	dvc init
 
 ## Execute tests
 test:
