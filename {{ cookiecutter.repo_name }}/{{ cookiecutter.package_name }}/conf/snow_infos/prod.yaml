@@ -2,7 +2,7 @@ credentials:
   user: AIRFLOW_DS_PROD
   role: R_DS_PROD_WRITE
   database: DATASCIENCE
-  warehouse: WH_DS_PROD_BETRECOMMENDER
+  warehouse: WH_DS_PROD
   password: ???
 
 ssm_snow_con_params: /airflow/connections/airflow-prod-snowflakeDS-secureStringParameter
