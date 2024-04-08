@@ -1,5 +1,6 @@
 import os
 import shutil
+import subprocess
 
 
 def move_contents_to_parent_folder(folder_path):
@@ -17,5 +18,12 @@ def move_contents_to_parent_folder(folder_path):
     # Remove the now empty folder
     os.rmdir(folder_path)
 
-repository_name = '{{ cookiecutter.repo_name }}_'
-move_contents_to_parent_folder(f"../{repository_name}")
+#repository_name = '{{ cookiecutter.repo_name }}_'
+#move_contents_to_parent_folder(f"../{repository_name}")
+
+# Move all files and directories in the repository folder to the parent directory
+subprocess.call("mv ../{{ cookiecutter.repo_name }}_/{.,}* ../", shell=True)
+# Remove the empty src file of template
+subprocess.call("rm -rf ../src", shell=True)
+# Remove the now empty repository folder
+subprocess.call("rm -rf ../{{ cookiecutter.repo_name }}_", shell=True)
