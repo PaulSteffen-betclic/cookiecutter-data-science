@@ -1,7 +1,7 @@
 {
     "project_name": "Project Name",
     "squad": ["Sport", "Casino", "Growth", "Safer Gaming", "Payment", "Other"],
-    "repo_name": "datascience-{{ cookiecutter.squad.lower().replace(' ', '') }}-{{ cookiecutter.project_name.lower().replace(' ', '-') }}",
+    "repo_name": "datascience-{{ cookiecutter.squad.lower().replace(' ', '') }}-{{ cookiecutter.project_name.lower().replace(' ', '') }}",
     "package_name": "{{ cookiecutter.repo_name }}",
     "python_version": "3.11",
     "author_name": "Data Science <DL_DatascienceTeam@betclicgroup.com>",
