@@ -1,5 +1,5 @@
 .PHONY: create_venv add_dev_dependencies add_codequality_dependencies add_test_dependencies add_doc_dependencies \
-	install_dependencies lint check_typing check_missing_docstring clean_notebooks pre-commit test doc
+	add_venv_to_kernels install_dependencies lint check_typing check_missing_docstring clean_notebooks pre-commit test doc
 
 #################################################################################
 # GLOBALS                                                                       #
@@ -41,6 +41,10 @@ add_doc_dependencies:
 ## Install Python Dependencies
 install_dependencies: 
 	poetry install
+
+## Add venv to jupyter kernels
+add_venv_to_kernels:
+	python -m ipykernel install --user --name=${PACKAGE_NAME}
 
 ## Lint using ruff
 lint:
